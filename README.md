@@ -11,9 +11,42 @@ npx cap sync
 
 ## API
 
-<docgen-index></docgen-index>
+<docgen-index>
+
+* [`getLocation()`](#getlocation)
+* [Interfaces](#interfaces)
+
+</docgen-index>
 
 <docgen-api>
-<!-- run docgen to generate docs from the source -->
-<!-- More info: https://github.com/ionic-team/capacitor-docgen -->
+<!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+
+### getLocation()
+
+```typescript
+getLocation() => any
+```
+
+Method that gets the current device location.
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### Interfaces
+
+
+#### ILocation
+
+Interface that represents the device location data.
+
+| Prop            | Type                |
+| --------------- | ------------------- |
+| **`deviceId`**  | <code>string</code> |
+| **`accuracy`**  | <code>number</code> |
+| **`longitude`** | <code>string</code> |
+| **`latitude`**  | <code>string</code> |
+| **`speed`**     | <code>number</code> |
+
 </docgen-api>

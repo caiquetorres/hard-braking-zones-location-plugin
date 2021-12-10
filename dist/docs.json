@@ -1,0 +1,75 @@
+{
+  "api": {
+    "name": "LocationPlugin",
+    "slug": "locationplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "getLocation",
+        "signature": "() => any",
+        "parameters": [],
+        "returns": "any",
+        "tags": [
+          {
+            "name": "returns",
+            "text": "an object that represents the location data."
+          }
+        ],
+        "docs": "Method that gets the current device location.",
+        "complexTypes": [
+          "ILocation"
+        ],
+        "slug": "getlocation"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "ILocation",
+      "slug": "ilocation",
+      "docs": "Interface that represents the device location data.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "deviceId",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "accuracy",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number"
+        },
+        {
+          "name": "longitude",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "latitude",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "speed",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "enums": []
+}

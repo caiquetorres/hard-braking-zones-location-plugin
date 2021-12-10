@@ -1,10 +1,13 @@
 import { WebPlugin } from '@capacitor/core';
 
+import type { ILocation } from '.';
 import type { LocationPlugin } from './definitions';
 
 export class LocationWeb extends WebPlugin implements LocationPlugin {
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
+  /**
+   * @inheritdoc
+   */
+  async getLocation(): Promise<ILocation> {
+    throw new Error('Method not implemented.');
   }
 }

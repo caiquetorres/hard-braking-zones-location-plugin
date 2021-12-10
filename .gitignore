@@ -1,5 +1,5 @@
 # node files
-dist
+# dist for using git url
 node_modules
 
 # iOS files

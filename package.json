@@ -1,6 +1,6 @@
 {
   "name": "@hard-braking-zones/location",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Project developed for monitoring hard braking zones as a scientific initiation at Facens in the period 2021/2022.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
