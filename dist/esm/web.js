@@ -3,7 +3,7 @@ export class LocationWeb extends WebPlugin {
     /**
      * @inheritdoc
      */
-    async getLocation() {
+    async init() {
         throw new Error('Method not implemented.');
     }
 }

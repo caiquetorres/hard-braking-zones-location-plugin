@@ -6,26 +6,101 @@
     "tags": [],
     "methods": [
       {
-        "name": "getLocation",
+        "name": "init",
         "signature": "() => any",
         "parameters": [],
         "returns": "any",
-        "tags": [
+        "tags": [],
+        "docs": "Method that needs to be called before the plugin starts.",
+        "complexTypes": [],
+        "slug": "init"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: string, listenerFunc: ListenerCallback) => any",
+        "parameters": [
           {
-            "name": "returns",
-            "text": "an object that represents the location data."
+            "name": "eventName",
+            "docs": "defines the event name.",
+            "type": "string"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "defines the callback that will be called when\nthe event be fired.",
+            "type": "(err: any, ...args: {}) => void"
           }
         ],
-        "docs": "Method that gets the current device location.",
-        "complexTypes": [
-          "ILocation"
+        "returns": "any",
+        "tags": [
+          {
+            "name": "param",
+            "text": "eventName defines the event name."
+          },
+          {
+            "name": "param",
+            "text": "listenerFunc defines the callback that will be called when\nthe event be fired."
+          }
         ],
-        "slug": "getlocation"
+        "docs": "Method that add some listener to listen for an event.",
+        "complexTypes": [
+          "ListenerCallback",
+          "PluginListenerHandle"
+        ],
+        "slug": "addlistener"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'location', listenerFunc: (location: ILocation) => void) => any",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "defines the event name.",
+            "type": "\"location\""
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "defines the callback that will be called when\nthe event be fired.",
+            "type": "(location: ILocation) => void"
+          }
+        ],
+        "returns": "any",
+        "tags": [
+          {
+            "name": "param",
+            "text": "eventName defines the event name."
+          },
+          {
+            "name": "param",
+            "text": "listenerFunc defines the callback that will be called when\nthe event be fired."
+          }
+        ],
+        "docs": "Method that add some listener to listen for an event.",
+        "complexTypes": [
+          "ILocation",
+          "PluginListenerHandle"
+        ],
+        "slug": "addlistener"
       }
     ],
     "properties": []
   },
   "interfaces": [
+    {
+      "name": "PluginListenerHandle",
+      "slug": "pluginlistenerhandle",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "remove",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "() => any"
+        }
+      ]
+    },
     {
       "name": "ILocation",
       "slug": "ilocation",

@@ -12,7 +12,7 @@ class LocationWeb extends core.WebPlugin {
     /**
      * @inheritdoc
      */
-    async getLocation() {
+    async init() {
         throw new Error('Method not implemented.');
     }
 }

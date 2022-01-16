@@ -9,7 +9,7 @@ var capacitorLocation = (function (exports, core) {
         /**
          * @inheritdoc
          */
-        async getLocation() {
+        async init() {
             throw new Error('Method not implemented.');
         }
     }
