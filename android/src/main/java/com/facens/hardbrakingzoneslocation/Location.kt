@@ -12,6 +12,9 @@ import com.google.android.gms.location.LocationServices
 class Location {
     private var fusedLocationClient: FusedLocationProviderClient? = null
 
+    /**
+     * Method that gets the user's location.
+     */
     fun getLocation(context: Context, callback: (locationData: LocationData) -> Unit) {
         if (fusedLocationClient == null) {
             fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
@@ -37,6 +40,9 @@ class Location {
         }
     }
 
+    /**
+     * Method that gets the user's device id.
+     */
     @SuppressLint("HardwareIds")
     private fun getDeviceId(context: Context): String {
         return Settings.Secure.getString(

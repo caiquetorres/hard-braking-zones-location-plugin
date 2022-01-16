@@ -9,6 +9,10 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
+/**
+ * Plugin that allows getting the user's position and speed each second, even
+ * when the application is running on background.
+ */
 @CapacitorPlugin(
         name = "Location",
         permissions = [
@@ -33,17 +37,14 @@ class LocationPlugin : Plugin() {
         const val BACKGROUND_LOCATION = "background_location"
     }
 
+    /**
+     * Property that defines the plugin logic.
+     */
     private val implementation = Location()
 
-    private fun execute() {
-        setInterval(1000) {
-            implementation.getLocation(context) { location ->
-                val response = locationToJSObject(location)
-                notifyListeners("location", response, true)
-            }
-        }
-    }
-
+    /**
+     * Method that initializes the plugin loop.
+     */
     @PluginMethod
     fun init(call: PluginCall) {
         if (getPermissionState(LOCATION) == PermissionState.GRANTED &&
@@ -63,6 +64,9 @@ class LocationPlugin : Plugin() {
         }
     }
 
+    /**
+     * Method that is called when the user answers the location permission prompt.
+     */
     @PermissionCallback
     fun locationPermissionCallback(call: PluginCall) {
         if (getPermissionState(LOCATION) == PermissionState.GRANTED) {
@@ -77,6 +81,9 @@ class LocationPlugin : Plugin() {
         call.reject("Permission is required to get the location")
     }
 
+    /**
+     * Method that is called when the user answers the location permission prompt.
+     */
     @PermissionCallback
     fun backgroundLocationPermissionCallback(call: PluginCall) {
         if (getPermissionState(BACKGROUND_LOCATION) == PermissionState.GRANTED) {
@@ -87,6 +94,21 @@ class LocationPlugin : Plugin() {
         call.reject("Permission is required to get the background location")
     }
 
+    /**
+     * Method that starts the plugin loop.
+     */
+    private fun execute() {
+        setInterval(1000) {
+            implementation.getLocation(context) { location ->
+                val response = locationToJSObject(location)
+                notifyListeners("location", response, true)
+            }
+        }
+    }
+
+    /**
+     * Method that runs some callback each **milliseconds** interval.
+     */
     private fun setInterval(milliseconds: Long, handler: () -> Unit) {
         runBlocking {
             launch {
@@ -98,6 +120,9 @@ class LocationPlugin : Plugin() {
         }
     }
 
+    /**
+     * Method that converts an location object to a JSObject.
+     */
     private fun locationToJSObject(locationData: LocationData): JSObject {
         val response = JSObject()
         response.put("deviceId", locationData.deviceId)
