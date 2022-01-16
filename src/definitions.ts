@@ -1,3 +1,5 @@
+import type { ListenerCallback, PluginListenerHandle } from '@capacitor/core';
+
 /**
  * Interface that represents the device location data.
  */
@@ -11,9 +13,31 @@ export interface ILocation {
 
 export interface LocationPlugin {
   /**
-   * Method that gets the current device location.
-   *
-   * @returns an object that represents the location data.
+   * Method that needs to be called before the plugin starts.
    */
-  getLocation(): Promise<ILocation>;
+  init(): Promise<void>;
+
+  /**
+   * Method that add some listener to listen for an event.
+   *
+   * @param eventName defines the event name.
+   * @param listenerFunc defines the callback that will be called when
+   * the event be fired.
+   */
+  addListener(
+    eventName: string,
+    listenerFunc: ListenerCallback,
+  ): Promise<PluginListenerHandle>;
+
+  /**
+   * Method that add some listener to listen for an event.
+   *
+   * @param eventName defines the event name.
+   * @param listenerFunc defines the callback that will be called when
+   * the event be fired.
+   */
+  addListener(
+    eventName: 'location',
+    listenerFunc: (location: ILocation) => void,
+  ): Promise<PluginListenerHandle>;
 }
