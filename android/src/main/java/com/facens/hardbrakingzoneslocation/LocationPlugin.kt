@@ -38,6 +38,11 @@ class LocationPlugin : Plugin() {
     }
 
     /**
+     * Property that defines the location fetch interval in seconds.
+     */
+    private var interval: Float = 1f
+
+    /**
      * Property that defines the plugin logic.
      */
     private val implementation = Location()
@@ -46,7 +51,13 @@ class LocationPlugin : Plugin() {
      * Method that initializes the plugin loop.
      */
     @PluginMethod
-    fun init(call: PluginCall) {
+    fun init(call: PluginCall?) {
+        if (call == null) {
+            throw IllegalArgumentException("plugin call expected")
+        }
+
+        interval = call.getFloat("interval") ?: 1f
+
         if (getPermissionState(LOCATION) == PermissionState.GRANTED &&
                 getPermissionState(BACKGROUND_LOCATION) == PermissionState.GRANTED) {
             execute()
@@ -98,7 +109,7 @@ class LocationPlugin : Plugin() {
      * Method that starts the plugin loop.
      */
     private fun execute() {
-        setInterval(1000) {
+        setInterval((interval * 1000).toLong()) {
             implementation.getLocation(context) { location ->
                 val response = locationToJSObject(location)
                 notifyListeners("location", response, true)

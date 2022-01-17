@@ -13,7 +13,7 @@ npx cap sync
 
 <docgen-index>
 
-* [`init()`](#init)
+* [`init(...)`](#init)
 * [`addListener(...)`](#addlistener)
 * [`addListener(...)`](#addlistener)
 * [Interfaces](#interfaces)
@@ -23,13 +23,17 @@ npx cap sync
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### init()
+### init(...)
 
 ```typescript
-init() => any
+init(options: IInitOptions) => any
 ```
 
 Method that needs to be called before the plugin starts.
+
+| Param         | Type                                                  |
+| ------------- | ----------------------------------------------------- |
+| **`options`** | <code><a href="#iinitoptions">IInitOptions</a></code> |
 
 **Returns:** <code>any</code>
 
@@ -73,6 +77,16 @@ Method that add some listener to listen for an event.
 
 
 ### Interfaces
+
+
+#### IInitOptions
+
+Interface that represents an object that is reponsible for setting
+up the plugin.
+
+| Prop           | Type                | Description                                                                                                                        |
+| -------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **`interval`** | <code>number</code> | Defines a value in seconds that represents the interval that the `location` event will be called with the user's current location. |
 
 
 #### PluginListenerHandle

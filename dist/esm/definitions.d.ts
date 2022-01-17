@@ -9,11 +9,22 @@ export interface ILocation {
     latitude: string;
     speed: number;
 }
+/**
+ * Interface that represents an object that is reponsible for setting
+ * up the plugin.
+ */
+export interface IInitOptions {
+    /**
+     * Defines a value in seconds that represents the interval that the
+     * `location` event will be called with the user's current location.
+     */
+    interval: number;
+}
 export interface LocationPlugin {
     /**
      * Method that needs to be called before the plugin starts.
      */
-    init(): Promise<void>;
+    init(options: IInitOptions): Promise<void>;
     /**
      * Method that add some listener to listen for an event.
      *

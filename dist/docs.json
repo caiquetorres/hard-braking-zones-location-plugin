@@ -7,12 +7,20 @@
     "methods": [
       {
         "name": "init",
-        "signature": "() => any",
-        "parameters": [],
+        "signature": "(options: IInitOptions) => any",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "IInitOptions"
+          }
+        ],
         "returns": "any",
         "tags": [],
         "docs": "Method that needs to be called before the plugin starts.",
-        "complexTypes": [],
+        "complexTypes": [
+          "IInitOptions"
+        ],
         "slug": "init"
       },
       {
@@ -85,6 +93,22 @@
     "properties": []
   },
   "interfaces": [
+    {
+      "name": "IInitOptions",
+      "slug": "iinitoptions",
+      "docs": "Interface that represents an object that is reponsible for setting\nup the plugin.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "interval",
+          "tags": [],
+          "docs": "Defines a value in seconds that represents the interval that the\n`location` event will be called with the user's current location.",
+          "complexTypes": [],
+          "type": "number"
+        }
+      ]
+    },
     {
       "name": "PluginListenerHandle",
       "slug": "pluginlistenerhandle",
